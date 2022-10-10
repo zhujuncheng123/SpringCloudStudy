@@ -1,7 +1,7 @@
 package com.test.controller;
 
-import com.test.service.UserService;
-import entity.User;
+import com.test.entity.UserBorrowDetail;
+import com.test.service.BorrowService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,20 +10,19 @@ import javax.annotation.Resource;
 
 /**
  * @author: zhujc
- * @Title: UserController
+ * @Title: BorrowController
  * @ProjectName: SpringCloudStudy
  * @Description:
- * @date: 2022/10/10 13:48
+ * @date: 2022/10/10 15:08
  */
 @RestController
-public class UserController {
+public class BorrowController {
 
     @Resource
-    UserService service;
+    BorrowService service;
 
-    //这里以RESTFul风格为例
-    @RequestMapping("/user/{uid}")
-    public User findUserById(@PathVariable("uid") int uid){
-        return service.getUserById(uid);
+    @RequestMapping("/borrow/{uid}")
+    UserBorrowDetail findUserBorrows(@PathVariable("uid") int uid){
+        return service.getUserBorrowDetailByUid(uid);
     }
 }
